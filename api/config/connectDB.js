@@ -15,10 +15,10 @@ const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.users = require("../model/users")(sequelize, Sequelize);
-db.points = require("../model/points")(sequelize, Sequelize);
-db.roles = require("../model/roles")(sequelize, Sequelize);
-db.topographicBooklet = require("../model/topographicBooklet")(sequelize, Sequelize);
-db.typeOfTopographicSurvey = require("../model/typeOfTopographicSurvey")(sequelize, Sequelize);
+db.Users = require("../model/users")(sequelize, Sequelize);
+db.Points = require("../model/points")(sequelize, Sequelize);
+db.Roles = require("../model/roles")(sequelize, Sequelize);
+db.TopographicBooklet = require("../model/topographicBooklet")(sequelize, Sequelize);
+db.TypeOfTopographicSurvey = require("../model/typeOfTopographicSurvey")(sequelize, Sequelize);
 
 module.exports = db;
