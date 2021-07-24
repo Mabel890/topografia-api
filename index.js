@@ -21,6 +21,7 @@ db.sequelize.sync({ force: false }).then(() => {
 });
 
 require("./api/routes/users")(app);
+require("./api/routes/roles")(app);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

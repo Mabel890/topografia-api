@@ -17,9 +17,5 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    id_role: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
   });
 };
