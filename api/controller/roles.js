@@ -23,7 +23,41 @@ const getRoles = async (req, res) => {
   }
 };
 
+const updateRoles = async(req, res) => {
+  try {
+      const nombre = req.body.name;
+      const id = req.params.id;
+
+      const role = await db.Roles.findOne({where:{
+      id: id
+      }})
+  
+      role.name=nombre;
+      await rol.save()
+      res.json(role)
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+const deleteRole = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const role = await db.Roles.findOne({
+      where: {
+        id: id,
+      },
+    });
+    await role.destroy();
+    res.json({message: "The role has been errased"});
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   registerRole,
   getRoles,
+  updateRoles,
+  deleteRole,
 };

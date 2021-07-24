@@ -12,12 +12,17 @@ const sequelize = new Sequelize({
 });
 
 const db = {};
+const Users = require("../model/users")(sequelize, Sequelize);
+const Roles = require("../model/roles")(sequelize, Sequelize);
+
+Roles.hasMany(Users);
+Users.belongsTo(Roles);
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.Users = require("../model/users")(sequelize, Sequelize);
+db.Users = Users;
+db.Roles = Roles;
 db.Points = require("../model/points")(sequelize, Sequelize);
-db.Roles = require("../model/roles")(sequelize, Sequelize);
 db.TopographicBooklet = require("../model/topographicBooklet")(sequelize, Sequelize);
 db.TypeOfTopographicSurvey = require("../model/typeOfTopographicSurvey")(sequelize, Sequelize);
 
