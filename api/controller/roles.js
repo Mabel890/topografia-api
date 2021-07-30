@@ -23,22 +23,24 @@ const getRoles = async (req, res) => {
   }
 };
 
-const updateRoles = async(req, res) => {
+const updateRoles = async (req, res) => {
   try {
-      const nombre = req.body.name;
-      const id = req.params.id;
+    const nombre = req.body.name;
+    const id = req.params.id;
 
-      const role = await db.Roles.findOne({where:{
-      id: id
-      }})
-  
-      role.name=nombre;
-      await rol.save()
-      res.json(role)
+    const role = await db.Roles.findOne({
+      where: {
+        id: id,
+      },
+    });
+
+    role.name = nombre;
+    await role.save();
+    res.json(role);
   } catch (error) {
-      console.log(error)
+    console.log(error);
   }
-}
+};
 
 const deleteRole = async (req, res) => {
   try {
@@ -49,9 +51,23 @@ const deleteRole = async (req, res) => {
       },
     });
     await role.destroy();
-    res.json({message: "The role has been errased"});
+    res.json({ message: "The role has been errased" });
   } catch (error) {
     console.log(error);
+  }
+};
+
+const listRole = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const role = await db.Roles.findOne({
+      where: {
+        id: id,
+      },
+    });
+    res.json(role);
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -60,4 +76,5 @@ module.exports = {
   getRoles,
   updateRoles,
   deleteRole,
+  listRole,
 };
